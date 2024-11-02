@@ -1,7 +1,7 @@
 name: JSON Linter
 on:
   push:
-    branches: Laboratory_work_4
+    branches: main
 jobs:
   json_linter_test:
     runs-on: ubuntu-latest
