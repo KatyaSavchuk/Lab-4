@@ -1,0 +1,33 @@
+name: Print Software and Database Versions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  print_software_version:
+    name: Print Software Version
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Display Node.js Version
+        run: |
+          echo "Node.js Version:"
+          node --version
+
+  print_database_version:
+    name: Print Database Version
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Display MySQL Version
+        run: |
+          echo "MySQL Version:"
+          mysql --version
