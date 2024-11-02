@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "User Data Schema",
+  "description": "Схема для опису користувачів, їх сповіщень, показників здоров'я та новин.",
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "array",
+      "description": "Список користувачів",
+      "items": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "description": "Ім'я користувача",
+            "minLength": 1
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Прізвище користувача",
+            "minLength": 1
+          },
+          "notifications": {
+            "type": "array",
+            "description": "Список сповіщень користувача",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Текст сповіщення",
+                  "maxLength": 255
+                },
+                "date": {
+                  "type": "string",
+                  "description": "Дата отримання сповіщення",
+                  "format": "date"
+                }
+              },
+              "required": ["message", "date"]
+            }
+          },
+          "healthMetrics": {
+            "type": "object",
+            "description": "Показники здоров'я користувача",
+            "properties": {
+              "heartRate": {
+                "type": "integer",
+                "description": "Показник серцебиття",
+                "minimum": 1
+              },
+              "bloodPressure": {
+                "type": "integer",
+                "description": "Артеріальний тиск",
+                "minimum": 50,
+                "maximum": 200
+              },
+              "physicalActivityLevel": {
+                "type": "integer",
+                "description": "Рівень фізичної активності",
+                "minimum": 0,
+                "maximum": 100
+              }
+            },
+            "required": ["heartRate", "bloodPressure", "physicalActivityLevel"]
+          },
+          "news": {
+            "type": "array",
+            "description": "Список новин",
+            "items": {
+              "type": "object",
+              "properties": {
+                "headline": {
+                  "type": "string",
+                  "description": "Заголовок новини",
+                  "maxLength": 255
+                },
+                "content": {
+                  "type": "string",
+                  "description": "Вміст новини",
+                  "minLength": 1
+                }
+              },
+              "required": ["headline", "content"]
+            }
+          },
+          "newsTopic": {
+            "type": "object",
+            "description": "Тема новин",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Назва теми",
+                "maxLength": 100
+              }
+            },
+            "required": ["name"]
+          }
+        },
+        "required": ["firstName", "lastName", "notifications", "healthMetrics", "news", "newsTopic"]
+      }
+    }
+  },
+  "required": ["users"]
+}
