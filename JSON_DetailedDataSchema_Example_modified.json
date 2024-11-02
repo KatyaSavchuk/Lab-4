@@ -25,7 +25,7 @@
             "description": "Список сповіщень користувача",
             "items": {
               "type": "object",
-              "properties": {
+              "properties": 
                 "message": {
                   "type": "string",
                   "description": "Текст сповіщення",
